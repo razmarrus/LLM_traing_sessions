@@ -1,20 +1,23 @@
+# pip-only setup. Direct dependencies pinned to the versions in poetry.lock.
+# Regenerate after changing pyproject.toml. For a full pin set including
+# transitive dependencies (needs poetry-plugin-export):
+#   poetry export --without-hashes -o requirements.txt
+
 # Core ML
-torch==2.3.1
-torchvision==0.18.1
+torch==2.14.1
 
 # HuggingFace ecosystem
-transformers==4.44.2
-datasets==2.21.0
-peft==0.12.0
-accelerate==0.34.2
-tokenizers==0.19.1
-huggingface-hub==0.24.6
+transformers==5.19.0
+datasets==5.1.0
+peft==0.21.2
+accelerate==1.15.0
 
 # Scientific Python
-numpy==1.26.4
-scikit-learn==1.5.1
-matplotlib==3.9.2
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+matplotlib==3.11.2
 
 # Notebook
-ipykernel==6.29.5
-jupyter==1.0.0
+ipykernel==7.4.0
+notebook==7.6.3
