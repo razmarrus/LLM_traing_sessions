@@ -1,0 +1,35 @@
+[project]
+name = "llm-training-sessions"
+version = "0.1.0"
+description = "Notebooks for the LLM training sessions: PyTorch basics and LoRA fine-tuning."
+authors = [{ name = "Margot Razumeyeva", email = "margot.razumeyeva@xomnia.com" }]
+readme = "README.md"
+# Single source for the Python range. Lower bound: numpy 2.5 requires 3.12.
+# Upper bound: torch 2.14 ships wheels up to 3.14.
+requires-python = ">=3.12,<3.15"
+# Direct imports only; tokenizers, huggingface-hub, safetensors and pyarrow
+# are resolved transitively. Exact versions are fixed in poetry.lock.
+dependencies = [
+    # Core ML
+    "torch>=2.14.1,<3",
+    # HuggingFace ecosystem
+    "transformers>=5.19.0,<6",
+    "datasets>=5.1.0,<6",
+    "peft>=0.21.2,<0.22",
+    "accelerate>=1.15.0,<2",
+    # Scientific Python
+    "numpy>=2.5.3,<3",
+    "pandas>=3.0.6,<4",
+    "scikit-learn>=1.9.1,<2",
+    "matplotlib>=3.11.2,<4",
+    # Notebook
+    "ipykernel>=7.4.0,<8",
+    "notebook>=7.6.3,<8",
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
