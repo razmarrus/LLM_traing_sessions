@@ -21,3 +21,4 @@ matplotlib==3.11.2
 # Notebook
 ipykernel==7.4.0
 notebook==7.6.3
+ipywidgets==8.1.9
