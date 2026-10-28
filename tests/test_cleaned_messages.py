@@ -15,12 +15,13 @@ from pathlib import Path
 
 import pytest
 
-from clean_takeout import CUTOFF_RE
+from clean_takeout import CHAR_MAP, CUTOFF_RE
 
 MIN_RECOMMENDED_ROWS = 500  # same threshold as the notebook
 MAX_CHARS = 10_000  # longer is almost always leftover quoted or forwarded mail
 MAX_DUPLICATE_SHARE = 0.2
 MAX_REPORTED_LINES = 20
+INVISIBLE_CHARS = "".join(map(chr, CHAR_MAP))  # chars the cleaner removes
 
 LEFTOVER_PATTERNS: dict[str, re.Pattern[str]] = {
     "html_tag": re.compile(
@@ -39,7 +40,7 @@ LEFTOVER_PATTERNS: dict[str, re.Pattern[str]] = {
     "mbox_from_line": re.compile(r"^From \S+@\S+ \w{3} \w{3} ", re.M),
     "quoted_line": re.compile(r"^>", re.M),
     "reply_or_signature": CUTOFF_RE,
-    "invisible_char": re.compile("[\r\xa0​﻿]"),
+    "invisible_char": re.compile(f"[{re.escape(INVISIBLE_CHARS)}]"),
 }
 
 
